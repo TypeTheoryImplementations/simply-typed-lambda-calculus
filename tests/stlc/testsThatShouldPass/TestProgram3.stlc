@@ -1,0 +1,4 @@
+-- Copyright (C) 2025 Lincoln Sand
+-- SPDX-License-Identifier: MIT
+
+((lambda f:Int. lambda g:Int -> Int -> Int. lambda h:Int. lambda x:Int. lambda f:Int. f) free)

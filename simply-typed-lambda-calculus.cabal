@@ -1,0 +1,106 @@
+cabal-version:      3.4
+
+name:               simply-typed-lambda-calculus
+version:            1.0.0.0
+synopsis:           A straightforward implementation of Simply-Typed Lambda Calculus in Haskell
+description:        This is an easy to understand unofficial implementation of the Simply-Typed Lambda Calculus written in Haskell.
+category:           Text
+build-type:         Simple
+
+license:            MIT
+license-file:       LICENSE
+
+author:             Lincoln Sand
+maintainer:         sandlincoln@gmail.com
+
+-- Ensure .stlc tests are included in source tarballs.
+extra-source-files:
+    tests/stlc/*.stlc
+
+extra-doc-files:
+    README.md
+
+-- Install .stlc tests as data so test code can find them via Paths_*.
+data-files:
+    tests/stlc/*.stlc
+
+tested-with:
+    GHC == 9.10.*
+
+source-repository head
+    type: git
+    location: https://github.com/TypeTheoryImplementations/simply-typed-lambda-calculus
+
+common common-opts
+    default-language: Haskell2010
+    default-extensions:
+        OverloadedStrings
+    ghc-options:
+        -Wall
+        -Wcompat
+        -Wunused-top-binds
+        -Wunused-imports
+        -Wincomplete-uni-patterns
+        -Wincomplete-record-updates
+
+
+library internal
+    import:           common-opts
+    hs-source-dirs:   src
+
+    exposed-modules:
+        BetaReduction
+        DeBruijn
+        Parser
+        TypeChecker
+        Types
+
+    build-depends:
+        base ^>=4.20.0.0,
+        text >= 1.2,
+        megaparsec >= 9.0,
+        parser-combinators >= 1.0
+
+library
+    import:           common-opts
+    hs-source-dirs:   src-public
+
+    exposed-modules:
+        Interface
+
+    build-depends:
+        base ^>=4.20.0.0,
+        text >= 1.2,
+        megaparsec >= 9.0,
+        parser-combinators >= 1.0,
+        simply-typed-lambda-calculus:internal
+
+executable simply-typed-lambda-calculus
+    import:           common-opts
+    hs-source-dirs:   app
+    main-is:          Main.hs
+
+    build-depends:
+        base ^>=4.20.0.0,
+        text >= 1.2,
+        simply-typed-lambda-calculus
+
+test-suite simply-typed-lambda-calculus-test
+    import:           common-opts
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   tests/haskell
+    main-is:          Spec.hs
+
+    build-tool-depends:
+        hspec-discover:hspec-discover
+
+    build-depends:
+        base ^>=4.20.0.0,
+        text >= 1.2,
+        megaparsec >= 9.0,
+        hspec,
+        simply-typed-lambda-calculus,
+        simply-typed-lambda-calculus:internal
+
+    other-modules:
+        ParsingSpec
