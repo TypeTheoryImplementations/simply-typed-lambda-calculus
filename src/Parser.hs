@@ -17,7 +17,7 @@ import Types
 type Parser = Parsec Void.Void T.Text
 
 spaceConsumer :: Parser ()
-spaceConsumer = CharLexer.space ParsecChar.space1 (CharLexer.skipLineComment "//") empty
+spaceConsumer = CharLexer.space ParsecChar.space1 (CharLexer.skipLineComment "--") empty
 
 reservedKeywords :: [Name]
 reservedKeywords = ["lambda"]

@@ -5,7 +5,7 @@ module Types (Name, Error, Context, Type(..), SyntacticTerm(..), DeBruijnTerm(..
 
 import qualified Data.Text as T
 
-type Name = T.Text -- [a-zA-Z] or [0-9] or '-' (first character must be a letter)
+type Name = T.Text -- [a-zA-Z] or [0-9] (first character must be a letter)
 
 type Error = String
 

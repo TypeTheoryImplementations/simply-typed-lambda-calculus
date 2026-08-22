@@ -15,14 +15,10 @@ maintainer:         sandlincoln@gmail.com
 
 -- Ensure .stlc tests are included in source tarballs.
 extra-source-files:
-    tests/stlc/*.stlc
+    tests/stlc/**/*.stlc
 
 extra-doc-files:
     README.md
-
--- Install .stlc tests as data so test code can find them via Paths_*.
-data-files:
-    tests/stlc/*.stlc
 
 tested-with:
     GHC == 9.10.*
