@@ -19,6 +19,8 @@ extra-source-files:
 
 extra-doc-files:
     README.md
+    -- covers megaparsec:
+    LICENSES/LICENSE-megaparsec.md
 
 tested-with:
     GHC == 9.10.*

@@ -26,8 +26,11 @@ The implementation uses MegaParsec for parsing. It then converts the parsed form
 
 All code in this repository is licensed under the MIT license. A copy of this can be found in `LICENSE`. Additionally, all source code files in this repository should also contain a copyright header specifying this.
 
+This code also uses the library [megaparsec](https://github.com/mrkkrp/megaparsec). In compliance with its license (BSD 2-clause), a copy of megaparsec's license can be found at `LICENSE-megaparsec.md`.
+
 ## How to use?
 
 This is a standard Haskell cabal package, so it can be cloned, built, and ran like any other cabal package.
 
 The program accepts a list of Simply-Typed Lambda Calculus source file names and outputs whether or not they are valid. If they are valid, it will print out the normalized beta reduced form (it will use De Bruijn indices for bound variable names). An example for how to use can be found in the `runTests.sh` shell script if on Linux.
+
